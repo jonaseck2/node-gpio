@@ -10,6 +10,7 @@ v8::Persistent<v8::FunctionTemplate> PWM::constructor;
 
 PWM::PWM(std::string num) : GPIO(num), running(false)
 {
+    GPIO::open();
     GPIO::setMode(GPIO::OUT);
 }
 

@@ -30,10 +30,14 @@ void PWM::run()
         int t = 1000 / this->freq;
         int up = this->dc * t / 100;
         int down = t - up;
-        this->write(GPIO::HIGH);
-        std::this_thread::sleep_for(std::chrono::milliseconds(up));
-        this->write(GPIO::LOW);
-        std::this_thread::sleep_for(std::chrono::milliseconds(down));
+        if(up){
+          this->write(GPIO::HIGH);
+          std::this_thread::sleep_for(std::chrono::milliseconds(up));
+        }
+        if(down){
+          this->write(GPIO::LOW);
+          std::this_thread::sleep_for(std::chrono::milliseconds(down));
+        }
     }
 }
 

@@ -102,7 +102,7 @@ void CapacitiveTouch::Init(v8::Handle<v8::Object> exports)
 void CapacitiveTouch::New(const v8::FunctionCallbackInfo<v8::Value>& args)
 {
     v8::Isolate* isolate = args.GetIsolate();
-    if (!args.Length() == 2)
+    if (args.Length() != 2)
     {
         isolate->ThrowException(v8::Exception::TypeError(v8::String::NewFromUtf8(isolate, "Wrong number of arguments")));
         return;
